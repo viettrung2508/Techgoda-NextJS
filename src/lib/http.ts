@@ -61,9 +61,9 @@ const request = async <Response>(method: 'GET' | 'POST' | 'PUT' | 'DELETE', url:
     status: res.status,
     payload
   }
-  if (!res.ok) {
-    throw new HttpError(data)
-  }
+  // if (!res.ok) {
+  //   throw new HttpError(data)
+  // }
   return data
 
 }

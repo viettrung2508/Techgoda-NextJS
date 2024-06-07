@@ -1,29 +1,35 @@
-'use client'
+
+import tagsApiRequest from "@/apiRequest/tags";
 import { useGetPost } from "@/lib/publiz";
 import Image from "next/image";
 import { useState } from "react";
 
-export default function Home() {
-  const [loading, setLoading] = useState(false);
-  const fetchDataFromApi = async () => {
-    try {
-      setLoading(true);
-      const response = await fetch("/api/products", {
-        headers: {
-          Accept: "application/json",
-          method: "GET",
-        },
-      });
-      if (response) {
-        const data = await response.json();
-        console.log(data);
-      }
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setLoading(false);
-    }
-  };
+export default async function Home() {
+
+  const { payload } = await tagsApiRequest.getList()
+  const tags = payload
+
+  // const [loading, setLoading] = useState(false);
+  // const fetchDataFromApi = async () => {
+  //   try {
+  //     setLoading(true);
+  //     const response = await fetch("/api/products", {
+  //       headers: {
+  //         Accept: "application/json",
+  //         method: "GET",
+  //       },
+  //     });
+  //     if (response) {
+  //       const data = await response.json();
+  //       console.log(data);
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+
   return (
     <main>
       <div className="lg:grid grid-cols-12 max-w-7xl lg:mx-auto ">
@@ -86,7 +92,7 @@ export default function Home() {
               </h1>
             </div>
 
-
+            
           </div>
         </div>
         {/* <div className="col-span-4">
@@ -103,9 +109,9 @@ export default function Home() {
           ))}
         </div> */}
       </div>
-      <button onClick={() => fetchDataFromApi()}>
+      {/* <button onClick={() => fetchDataFromApi()}>
         123
-      </button>
+      </button> */}
 
 
     </main>
