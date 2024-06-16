@@ -108,9 +108,7 @@
 //         </div>
 //     )
 // }
-
 'use client'
-
 import { auth } from "@/lib/clientApp";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react"

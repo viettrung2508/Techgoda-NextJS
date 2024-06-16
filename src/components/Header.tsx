@@ -1,52 +1,20 @@
 'use client'
-
-
 import Link from "next/link";
-import {
-    Form,
-    FormControl,
-    FormDescription,
-    FormField,
-    FormItem,
-    FormLabel,
-    FormMessage,
-} from "@/components/ui/form"
 import {
     BriefcaseBusiness,
     Home,
     MessageSquare,
     Newspaper,
 } from "lucide-vue-next";
-import { Button } from "@/components/ui/button";
-import {
-    Dialog,
-    DialogContent,
-    DialogTrigger,
-} from "@/components/ui/dialog"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
-import {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuItem,
-    DropdownMenuLabel,
-    DropdownMenuSeparator,
-    DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { useState } from "react"
 import LoginForm from "./LoginForm";
 import SignUpForm from "./SignUpForm";
 const formSchema = z.object({
     username: z.string().min(2).max(50),
 })
 type FormValues = z.infer<typeof formSchema>
-
-
-
-
 export default function Header() {
     const links = [
         {
@@ -56,7 +24,7 @@ export default function Header() {
         },
         {
             name: 'Forum',
-            path: '/services',
+            path: '/forum',
             icon: MessageSquare,
         },
         {
@@ -77,7 +45,6 @@ export default function Header() {
         },
     })
     function onSubmit(values: z.infer<typeof formSchema>) {
-
         console.log(values)
     }
     return (
@@ -100,7 +67,6 @@ export default function Header() {
                                         />
                                     </svg>
                                 </span>
-
                                 <span className="text-xl font-medium ">Techgoda</span>
                             </div>
                         </div>
@@ -118,9 +84,6 @@ export default function Header() {
                     <SignUpForm />
                 </div>
             </div>
-
-
-
         </div>
     )
 }
