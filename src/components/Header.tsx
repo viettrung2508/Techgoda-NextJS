@@ -5,7 +5,7 @@ import {
     Home,
     MessageSquare,
     Newspaper,
-} from "lucide-vue-next";
+} from "lucide-react";
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
@@ -29,12 +29,12 @@ export default function Header() {
         },
         {
             name: 'Devfeeds',
-            path: '/team',
+            path: '/devfeeds',
             icon: Newspaper,
         },
         {
             name: 'Jobs',
-            path: '/contact',
+            path: '/jobs',
             icon: BriefcaseBusiness,
         },
     ]
@@ -73,9 +73,12 @@ export default function Header() {
                     </Link>
                     <div className="flex items-center text-sm">
                         {links.map((link, index) => (
-                            <Link href={link.path} key={index} className="inline-flex flex-col md:flex-row px-4 py-1 md:py-2 hover:bg-primary/20 hover:text-primary rounded md:rounded-full items-center md:gap-2">
-                                {link.name}
-                            </Link>
+                            <div key={index}>
+                                <Link href={link.path} className="inline-flex flex-col md:flex-row px-4 py-1 md:py-2 hover:bg-primary/20 hover:text-primary rounded md:rounded-full items-center md:gap-2">
+                                    <link.icon />
+                                    {link.name}
+                                </Link>
+                            </div>
                         ))}
                     </div>
                 </div>

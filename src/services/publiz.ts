@@ -104,3 +104,13 @@ export const getGetOrganizationPosts = async (organizationId: string | number): 
     })
     return response;
 };
+
+
+export const getOrganizations = async (): Promise<BaseResponse<Organization[]>> => {
+    const response = await http.get<BaseResponse<Organization[]>>(`api/v1/organizations`, {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    return response;
+};
